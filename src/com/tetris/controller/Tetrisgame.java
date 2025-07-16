@@ -1,5 +1,5 @@
 package com.tetris.controller;
-//importo la clase tablero para usarlo en esta clase
+//importo la clase tablero para usarlo en esta clase....
 import com.tetris.model.Tablero;
 public class Tetrisgame {
     private Tablero tablero;

@@ -1,5 +1,5 @@
 package com.tetris.view;
-//esta clase es para representar cada casilla del tablero
+//esta clase es para representar cada casilla del tablero...
 import javax.swing.JFrame;
 import com.tetris.controller.Tetrisgame;
 

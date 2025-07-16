@@ -9,12 +9,12 @@ import java.awt.Color;
 public class Piezas {
     //Guarda el valor del enum
     private Piezas tipo;
-    private Point[] forma; // describe la posición de cada bloque en un arreglo 4x4
+    private Point[] forma; // describe la posición de cada bloque en un arreglo 4x4...
     private Point posicion; //Ubicacion de la pieza en el tablero
     private Color color;// de que color se pinta la pieza
 
     //aca guardamos el tipo, las coordenadas y el color de la pieza
-    //ademas inicializa la posicion para que salga la pieza en la parte de arriba
+    //ademas inicializa la posicion para que salga la pieza en la parte de arriba...
     public Piezas(Piezas tipo, Point[] forma, Color color) {
         this.tipo = tipo;
         this.forma = forma;

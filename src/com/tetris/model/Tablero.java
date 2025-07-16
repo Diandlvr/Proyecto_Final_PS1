@@ -1,5 +1,5 @@
 package com.tetris.model;
-//Aqui se importa la calse celda para usarla en el tablero
+//Aqui se importa la calse celda para usarla en el tablero...
 import com.tetris.model.Celdas;
 public class Tablero { //contiene la matriz en la que se almacenan las celdas
     // se configura el tamaño de las celdas
