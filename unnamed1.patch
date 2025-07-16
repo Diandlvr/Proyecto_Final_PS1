@@ -1,0 +1,348 @@
+Index: src/com/tetris/view/Ventana.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/tetris/view/Ventana.java b/src/com/tetris/view/Ventana.java
+new file mode 100644
+--- /dev/null
++++ b/src/com/tetris/view/Ventana.java
+@@ -0,0 +1,19 @@
++package com.tetris.view;
++//esta clase es para representar cada casilla del tablero
++import javax.swing.JFrame;
++import com.tetris.controller.Tetrisgame;
++
++public class Ventana  extends JFrame {
++    private Tetrisgame juego;
++    public Ventana(Tetrisgame juego ) {
++        super("Tetris");
++        this.juego = juego;
++        //TODO: configurar BorderLayout, tamaño, operaciones de cierre
++        //TODO: añadir GamePanel y ControlPanel
++
++    }
++        public void iniciar() {
++        this.setSize(300, 300);
++        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
++        }
++}
+Index: src/com/tetris/model/Celdas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/tetris/model/Celdas.java b/src/com/tetris/model/Celdas.java
+new file mode 100644
+--- /dev/null
++++ b/src/com/tetris/model/Celdas.java
+@@ -0,0 +1,7 @@
++package com.tetris.model;
++
++public class Celdas {
++
++// TODO: atributo booleano ocupado y Color color
++// TODO: métodos isOcupada(), ocupar(Color c), limpiar(), getColor()
++}
+\ No newline at end of file
+Index: src/com/tetris/model/Piezas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/tetris/model/Piezas.java b/src/com/tetris/model/Piezas.java
+new file mode 100644
+--- /dev/null
++++ b/src/com/tetris/model/Piezas.java
+@@ -0,0 +1,46 @@
++package com.tetris.model;
++//con esta libreria se maneja las coordenadas relativas de los bloques de la pieza
++import java.awt.Point;
++// aca importamos para darle color a las piezas
++import java.awt.Color;
++//importamos el enum
++
++
++public class Piezas {
++    //Guarda el valor del enum
++    private Piezas tipo;
++    private Point[] forma; // describe la posición de cada bloque en un arreglo 4x4
++    private Point posicion; //Ubicacion de la pieza en el tablero
++    private Color color;// de que color se pinta la pieza
++
++    //aca guardamos el tipo, las coordenadas y el color de la pieza
++    //ademas inicializa la posicion para que salga la pieza en la parte de arriba
++    public Piezas(Piezas tipo, Point[] forma, Color color) {
++        this.tipo = tipo;
++        this.forma = forma;
++        this.color = color;
++        this.posicion = new Point(3, 0);
++    }
++    //para poder ver los valores sin que se vean los campos
++    public Piezas getTipo() { return tipo; }
++    public Point[] getForma() { return forma; }
++    public Point getPosicion() { return posicion; }
++    public Color getColor() { return color; }
++//utilizamos un metodo para desplazar las piezas para sumar dx o dy a su posicion actual
++    public void mover(int dx, int dy) {
++        posicion.translate(dx, dy);
++    }
++//rota 90° la figura hacia la derecha
++    public void rotar() {
++        for (Point p : forma) {
++            int x = p.x, y = p.y;
++            p.setLocation(y, -x);
++        }
++    }
++
++
++
++
++
++
++}
+Index: src/com/tetris/model/Tablero.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/tetris/model/Tablero.java b/src/com/tetris/model/Tablero.java
+new file mode 100644
+--- /dev/null
++++ b/src/com/tetris/model/Tablero.java
+@@ -0,0 +1,29 @@
++package com.tetris.model;
++//Aqui se importa la calse celda para usarla en el tablero
++import com.tetris.model.Celdas;
++public class Tablero { //contiene la matriz en la que se almacenan las celdas
++    // se configura el tamaño de las celdas
++    public static final int FILAS = 20;
++    public static final int COLUMNAS = 10;
++    //aqui guardamos las dimensiones de las tablas de celdas
++    private final Celdas[][] matriz = new Celdas[FILAS][COLUMNAS];
++//recorremos todas las posiciones de las filas (y) desde 0, hasta filas-1, y en x desde 0 a columnas-1
++    public Tablero() {
++        for (int y = 0; y < FILAS; y++) {
++            for (int x = 0; x < COLUMNAS; x++) {
++                matriz[y][x] = new Celdas();
++        }
++    }
++}
++//sirve para acceder desde afuera a la celda en (x,y)
++    public Celdas getCeldas(int x, int y) {
++        return matriz[y][x];
++    }
++}
++
++    // TODO: constantes FILAS, COLUMNAS
++    // TODO: Celda[][] matriz
++    // TODO: constructor que inicializa todas las celdas
++    // TODO: métodos canPlace(...), clearLines(), getCelda(x,y), etc.
++
++
+Index: src/com/tetris/model/TipoPieza.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/tetris/model/TipoPieza.java b/src/com/tetris/model/TipoPieza.java
+new file mode 100644
+--- /dev/null
++++ b/src/com/tetris/model/TipoPieza.java
+@@ -0,0 +1,11 @@
++package com.tetris.model;
++//formas de las piezas
++    public enum TipoPieza {
++        I,
++        O,
++        T,
++        S,
++        Z,
++        J,
++        L;
++    }
+Index: src/com/tetris/controller/Tetrisgame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/tetris/controller/Tetrisgame.java b/src/com/tetris/controller/Tetrisgame.java
+new file mode 100644
+--- /dev/null
++++ b/src/com/tetris/controller/Tetrisgame.java
+@@ -0,0 +1,15 @@
++package com.tetris.controller;
++//importo la clase tablero para usarlo en esta clase
++import com.tetris.model.Tablero;
++public class Tetrisgame {
++    private Tablero tablero;
++    // TODO: pieza activa, temporizador, puntuación
++    public Tetrisgame() {
++        // TODO: inicializar tablero y temporizador
++    }
++    public void pasoDelJuego() {
++        // TODO: bajar pieza, fijar, limpiar líneas, generar nueva pieza
++    }
++    // TODO: métodos para moverIzquierda, moverDerecha, rotar, caerRápido
++}
++
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java
++++ b/src/Main.java
+@@ -1,15 +1,5 @@
+-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+-public class Main {
+-    public static void main(String[] args) {
+-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+-        // to see how IntelliJ IDEA suggests fixing it.
+-        System.out.printf("Hello and welcome!");
++package com.tetris.model;
+ 
+-        for (int i = 1; i <= 5; i++) {
+-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
+-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
+-            System.out.println("i = " + i);
+-        }
+-    }
+-}
+\ No newline at end of file
++public class Cell {
++    // TODO: atributos y métodos
++}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null
++++ b/.idea/vcs.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/Proyecto_Final_PS1" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null
++++ b/.idea/misc.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="24" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null
++++ b/.idea/.gitignore
+@@ -0,0 +1,10 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
++# Environment-dependent path to Maven home directory
++/mavenHomeManager.xml
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null
++++ b/.idea/modules.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/Proyecto_Final.iml" filepath="$PROJECT_DIR$/Proyecto_Final.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/dictionaries/project.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dictionaries/project.xml b/.idea/dictionaries/project.xml
+new file mode 100644
+--- /dev/null
++++ b/.idea/dictionaries/project.xml
+@@ -0,0 +1,7 @@
++<component name="ProjectDictionaryState">
++  <dictionary name="project">
++    <words>
++      <w>pieza</w>
++    </words>
++  </dictionary>
++</component>
+\ No newline at end of file
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+--- /dev/null
++++ b/.idea/inspectionProfiles/Project_Default.xml
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="FtlWellformednessInspection" enabled="true" level="ERROR" enabled_by_default="true" />
++  </profile>
++</component>
+\ No newline at end of file
+Index: Proyecto_Final.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Proyecto_Final.iml b/Proyecto_Final.iml
+new file mode 100644
+--- /dev/null
++++ b/Proyecto_Final.iml
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
