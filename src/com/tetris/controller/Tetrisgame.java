@@ -83,7 +83,10 @@ public class Tetrisgame {
     }
 
     // getters para la vista
-    public Tablero getTablero()      { return tablero; }
-    public Piezas  getPiezaActual()  { return piezaActual; }
-    public int     getPuntuacion()   { return puntuacion; }
+    public Tablero getTablero()      {
+        return tablero; }
+    public Piezas  getPiezaActual()  {
+        return piezaActual; }
+    public int     getPuntuacion()   {
+        return puntuacion; }
 }

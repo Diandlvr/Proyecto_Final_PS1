@@ -1,10 +1,13 @@
 package com.tetris.model;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class PiezasFactory {
     public Piezas nuevaPieza() {
         // Aquí decides aleatoriamente un TipoPieza y creas la instancia:
-        TipoPieza tipo = TipoPieza.values()[(int)(Math.random() * TipoPieza.values().length)];
-        return new Piezas(tipo);
+        TipoPieza[] valores  = TipoPieza.values();
+        int idx = ThreadLocalRandom.current().nextInt(valores.length);
+        return new Piezas(valores[idx]);
     }
 
 }
