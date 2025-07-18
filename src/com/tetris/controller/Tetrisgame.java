@@ -1,4 +1,8 @@
 package com.tetris.controller;
+
+import java.awt.Point;
+import com.tetris.model.Piezas;
+import com.tetris.model.Celdas;
 //importo la clase tablero para usarlo en esta clase....
 import com.tetris.model.Tablero;
 public class Tetrisgame {
