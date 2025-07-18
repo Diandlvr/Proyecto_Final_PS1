@@ -39,6 +39,7 @@ public class Tablero { //contiene la matriz en la que se almacenan las celdas
 
     }
     // Pa limpiar las lineas y generarun espacio arriba del ultimo espacio ocupado
+    // tmb devuelve cuantas se limpiaron
     public int limpiarLineas() {
         int lineas = 0;
         for (int y = FILAS - 1; y >= 0; y--) {
@@ -51,9 +52,11 @@ public class Tablero { //contiene la matriz en la que se almacenan las celdas
             }
             if (completa) {
             lineas++;
+            //generarun espacio arriba del ultimo espacio ocupado
                 for (int yy = y; yy > 0; yy--) {
                     System.arraycopy(matriz[yy - 1], 0, matriz[yy], 0, COLUMNAS);
                 }
+                //pa hacer una fila nueva en arriba
                 for (int x = 0; x < COLUMNAS; x++) {
                     matriz[0][x] = new Celdas();
                 }
