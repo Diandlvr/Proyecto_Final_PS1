@@ -37,7 +37,11 @@ public class Tablero { //contiene la matriz en la que se almacenan las celdas
         }
         return true;
 
+
+
+
     }
+
     // Pa limpiar las lineas y generarun espacio arriba del ultimo espacio ocupado
     // tmb devuelve cuantas se limpiaron
     public int limpiarLineas() {
@@ -66,6 +70,10 @@ public class Tablero { //contiene la matriz en la que se almacenan las celdas
         return lineas;
 
     }
+    public Celdas[][] getMatriz() {
+        return matriz;
+    }
+
 }
 
 

@@ -14,15 +14,14 @@ public class Tetrisgame {
     private GamePanel vista;
     private int puntuacion;
 
-    public Tetrisgame(GamePanel vista) {
+    public Tetrisgame() {
         this.tablero     = new Tablero();
         this.fabrica     = new PiezasFactory();
         this.piezaActual = fabrica.nuevaPieza();
-        this.vista       = vista;
         this.puntuacion  = 0;
     }
 
-    // baja la pieza; si no cabe, la bloquea
+    // baja la pieza, si no cabe, la bloquea
     public void pasoDelJuego() {
         if (tablero.puedeColocar(piezaActual, 0, 1)) {
             piezaActual.mover(0, 1);
@@ -31,7 +30,9 @@ public class Tetrisgame {
         }
         vista.repaint();
     }
-
+    public void setVista(GamePanel vista) {
+        this.vista = vista;
+    }
     // fija la pieza, limpia líneas y pide nueva
     public void bloquearPieza() {
         for (Point b : piezaActual.getForma()) {
