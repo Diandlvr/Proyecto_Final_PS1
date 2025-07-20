@@ -1,16 +1,19 @@
 package com.tetris.view;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Font;
 
 import com.tetris.controller.Tetrisgame;
 import com.tetris.model.Celdas;
 import com.tetris.model.Tablero;
+import com.tetris.model.Piezas;
 
 public class GamePanel extends JPanel {
     private static final int CELL_SIZE = 30;
@@ -18,17 +21,32 @@ public class GamePanel extends JPanel {
 
     public GamePanel(Tetrisgame juego) {
         this.juego = juego;
-        setPreferredSize(new Dimension(
-                Tablero.COLUMNAS * CELL_SIZE,
-                Tablero.FILAS   * CELL_SIZE
-        ));
+        int pw = Tablero.COLUMNAS * CELL_SIZE + 150;
+        int ph = Tablero.FILAS   * CELL_SIZE;
+        setPreferredSize(new Dimension(pw, ph));
         setBackground(Color.DARK_GRAY);
     }
 
-    @Override
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        int boardW = Tablero.COLUMNAS * CELL_SIZE;
+        int boardH = Tablero.FILAS   * CELL_SIZE;
+
+        //Puntuacion
+        g2.setColor(Color.WHITE);
+        g2.setFont(new Font("Arial", Font.PLAIN, 14));
+        g2.drawString("Puntos: " + juego.getPuntuacion(),
+                boardW + 20, 20);
+
+        //Gameover
+        if (juego.isGameOver()) {
+            g2.setFont(new Font("Arial", Font.BOLD, 36));
+            g2.setColor(Color.RED);
+            g2.drawString("GAME OVER", 30, boardH / 2);
+            return;
+        }
 
         //Se dibujan las celdas que van a estar fijas en el tablero
         Celdas[][] m = juego.getTablero().getMatriz();
@@ -56,5 +74,10 @@ public class GamePanel extends JPanel {
             g2.setColor(Color.BLACK);
             g2.drawRect(drawX, drawY, CELL_SIZE, CELL_SIZE);
         }
+
+
     }
 }
+
+
+
