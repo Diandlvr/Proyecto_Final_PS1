@@ -22,29 +22,49 @@ public class Ventana  extends JFrame {
     private Timer timer;
 
     public Ventana() {
-        super("Tetris");
+        super("Tetris - Juego Clásico");
         juego = new Tetrisgame();
         panel = new GamePanel(juego);
         juego.setVista(panel);
 
         // Panel enlazado al juego
         this.add(panel);
-        // Lo insertamos en el JFrame
-       setDefaultCloseOperation(EXIT_ON_CLOSE);
-        // para terminar el programa cuando cierra
-        setSize(300, 600);
+        
+        // Configuración de la ventana
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(400, 700);
         setLocationRelativeTo(null);
         setResizable(false);
-        //
+        
+        // Configuración de controles de teclado
+        configurarControles();
+        
+        // Loop de juego con velocidad dinámica
+        timer = new Timer(juego.getVelocidad(), new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                juego.pasoDelJuego();
+                // Actualizar velocidad del timer
+                timer.setDelay(juego.getVelocidad());
+            }
+        });
+        timer.start();
+
+        setVisible(true);
+    }
+    
+    private void configurarControles() {
         InputMap im = panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = panel.getActionMap();
 
+        // Movimiento izquierda
         im.put(KeyStroke.getKeyStroke("LEFT"), "moverIzq");
         am.put("moverIzq", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
                 juego.moverIzquierda();
             }
         });
+        
+        // Movimiento derecha
         im.put(KeyStroke.getKeyStroke("RIGHT"), "moverDer");
         am.put("moverDer", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
@@ -52,6 +72,7 @@ public class Ventana  extends JFrame {
             }
         });
 
+        // Soft drop (bajar)
         im.put(KeyStroke.getKeyStroke("DOWN"), "bajar");
         am.put("bajar", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
@@ -59,22 +80,36 @@ public class Ventana  extends JFrame {
             }
         });
 
-        im.put(KeyStroke.getKeyStroke("SPACE"), "rotar");
+        // Hard drop (espacio)
+        im.put(KeyStroke.getKeyStroke("SPACE"), "hardDrop");
+        am.put("hardDrop", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                juego.hardDrop();
+            }
+        });
+
+        // Rotación (flecha arriba)
+        im.put(KeyStroke.getKeyStroke("UP"), "rotar");
         am.put("rotar", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
                 juego.rotarPieza();
             }
         });
-
-        // Loop de juego: baja la pieza cada 500 ms
-        timer = new Timer(500, new ActionListener() {
+        
+        // Pausa (P)
+        im.put(KeyStroke.getKeyStroke("P"), "pausar");
+        am.put("pausar", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
-                juego.pasoDelJuego();
+                juego.togglePausa();
             }
         });
-        timer.start();
-
-        setVisible(true);
+        
+        // Reiniciar (R)
+        im.put(KeyStroke.getKeyStroke("R"), "reiniciar");
+        am.put("reiniciar", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                juego.reiniciarJuego();
+            }
+        });
     }
 }
-
