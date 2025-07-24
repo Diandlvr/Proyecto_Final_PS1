@@ -108,7 +108,7 @@ public class GamePanel extends JPanel {
             "← → : Mover",
             "↓ : Bajar",
             "↑ : Rotar",
-            "Espacio : Hard Drop",
+            "Espacio : Caída Rápida",
             "P : Pausar",
             "R : Reiniciar"
         };
