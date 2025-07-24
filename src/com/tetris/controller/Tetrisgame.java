@@ -70,14 +70,12 @@ public class Tetrisgame {
         
         // Sistema de puntuación mejorado
         if (lineas > 0) {
-            int puntos = 0;
             switch (lineas) {
-                case 1: puntos = 100; break;
-                case 2: puntos = 300; break;
-                case 3: puntos = 500; break;
-                case 4: puntos = 800; break;
+                case 1: puntuacion += 40 * nivel; break;
+                case 2: puntuacion += 100 * nivel; break;
+                case 3: puntuacion += 300 * nivel; break;
+                case 4: puntuacion += 1200 * nivel; break;
             }
-            puntuacion += puntos * nivel;
         }
         
         // Sistema de niveles
@@ -112,7 +110,6 @@ public class Tetrisgame {
         if (!gameOver && !pausado) {
             if (tablero.puedeColocar(piezaActual, 0, 1)) {
                 piezaActual.mover(0, 1);
-                puntuacion += 1; // Puntos por soft drop
             } else {
                 bloquearPieza();
             }
