@@ -1,0 +1,36 @@
+package com.tetris.view;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+
+public class VentanaPerdiste extends JFrame {
+    public VentanaPerdiste() {
+        setTitle("Juego Terminado");
+        setSize(300, 200);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        JLabel mensaje = new JLabel("¡Perdiste!", SwingConstants.CENTER);
+        mensaje.setFont(new Font("Arial", Font.BOLD, 24));
+        add(mensaje, BorderLayout.CENTER);
+
+        JPanel panelBotones = new JPanel();
+        JButton btnReintentar = new JButton("Reintentar");
+        JButton btnSalir = new JButton("Salir");
+
+        btnReintentar.addActionListener((ActionEvent e) -> {
+            dispose();
+            new Ventana(); // vuelve a abrir el juego
+        });
+
+        btnSalir.addActionListener((ActionEvent e) -> {
+            System.exit(0);
+        });
+
+        panelBotones.add(btnReintentar);
+        panelBotones.add(btnSalir);
+        add(panelBotones, BorderLayout.SOUTH);
+    }
+}
