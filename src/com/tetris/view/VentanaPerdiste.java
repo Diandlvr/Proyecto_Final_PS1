@@ -12,13 +12,11 @@ public class VentanaPerdiste extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Fondo oscuro tipo arcade
         getContentPane().setBackground(new Color(5, 5, 20));
 
-        // Etiqueta gigante estilo retro pixelado
         JLabel mensaje = new JLabel("¡PERDISTE!", SwingConstants.CENTER);
-        mensaje.setFont(new Font("Press Start 2P", Font.BOLD, 42)); // Fuente tipo arcade grande
-        mensaje.setForeground(new Color(255, 0, 80)); // rosa neón vibrante
+        mensaje.setFont(new Font("Press Start 2P", Font.BOLD, 42)); 
+        mensaje.setForeground(new Color(255, 0, 80)); 
         mensaje.setBorder(BorderFactory.createEmptyBorder(30, 10, 20, 10));
         add(mensaje, BorderLayout.CENTER);
 
@@ -29,13 +27,13 @@ public class VentanaPerdiste extends JFrame {
         panelBotones.setLayout(new GridLayout(1, 2, 40, 0));
 
         JButton btnReintentar = new JButton("▶ REINTENTAR");
-        btnReintentar.setBackground(new Color(0, 255, 180)); // verde aqua
+        btnReintentar.setBackground(new Color(0, 255, 180)); 
         btnReintentar.setForeground(Color.BLACK);
         btnReintentar.setFont(new Font("Press Start 2P", Font.PLAIN, 16));
         btnReintentar.setFocusPainted(false);
 
         JButton btnSalir = new JButton("■ SALIR");
-        btnSalir.setBackground(new Color(255, 120, 0)); // naranja neón
+        btnSalir.setBackground(new Color(255, 120, 0)); 
         btnSalir.setForeground(Color.BLACK);
         btnSalir.setFont(new Font("Press Start 2P", Font.PLAIN, 16));
         btnSalir.setFocusPainted(false);
