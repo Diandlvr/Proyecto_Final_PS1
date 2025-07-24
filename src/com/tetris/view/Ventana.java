@@ -12,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 // control y panel
 import com.tetris.controller.Tetrisgame;
-import com.tetris.view.GamePanel;
 
 
 public class Ventana  extends JFrame {
@@ -32,7 +31,7 @@ public class Ventana  extends JFrame {
         
         // Configuración de la ventana
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400, 700);
+        setSize(600, 700);
         setLocationRelativeTo(null);
         setResizable(false);
         
@@ -56,7 +55,7 @@ public class Ventana  extends JFrame {
         InputMap im = panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
         ActionMap am = panel.getActionMap();
 
-        // Movimiento izquierda
+       // Movimiento izquierda
         im.put(KeyStroke.getKeyStroke("LEFT"), "moverIzq");
         am.put("moverIzq", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
@@ -110,6 +109,8 @@ public class Ventana  extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 juego.reiniciarJuego();
             }
+        });
+    }
         });
     }
 }
