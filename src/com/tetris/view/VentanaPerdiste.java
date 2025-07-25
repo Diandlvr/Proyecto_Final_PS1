@@ -20,7 +20,7 @@ public class VentanaPerdiste extends JFrame {
         mensaje.setBorder(BorderFactory.createEmptyBorder(30, 10, 20, 10));
         add(mensaje, BorderLayout.CENTER);
 
-        // Panel de botones con estilo colorido
+        // Panel de botones 
         JPanel panelBotones = new JPanel();
         panelBotones.setBackground(new Color(5, 5, 20));
         panelBotones.setBorder(BorderFactory.createEmptyBorder(20, 50, 30, 50));
