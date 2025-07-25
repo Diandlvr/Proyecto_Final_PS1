@@ -69,7 +69,7 @@ public class Tetrisgame {
         int lineas = tablero.limpiarLineas();
         lineasCompletadas += lineas;
         
-        // Sistema de puntuación mejorado
+        // Sistema de puntuación 
         if (lineas > 0) {
             switch (lineas) {
                 case 1: puntuacion += 40 * nivel; break;
