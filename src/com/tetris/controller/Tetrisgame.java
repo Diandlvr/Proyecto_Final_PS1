@@ -42,6 +42,7 @@ public class Tetrisgame {
         
         if (!tablero.puedeColocar(piezaActual, 0, 0)) {
             gameOver = true;
+             javax.swing.SwingUtilities.invokeLater(() -> new com.tetris.view.VentanaPerdiste().setVisible(true));
             return;
         }
         
