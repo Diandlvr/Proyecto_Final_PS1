@@ -1,7 +1,6 @@
 package com.tetris.view;
 
 import javax.swing.JPanel;
-import javax.swing.Timer;
 import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.Color;
@@ -13,7 +12,6 @@ import java.awt.RenderingHints;
 import com.tetris.controller.Tetrisgame;
 import com.tetris.model.Celdas;
 import com.tetris.model.Tablero;
-import com.tetris.model.Piezas;
 
 public class GamePanel extends JPanel {
     private static final int CELL_SIZE = 30;
