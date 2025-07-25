@@ -109,8 +109,5 @@ public class Ventana  extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 juego.reiniciarJuego();
             }
-        });
-    }
-        });
     }
 }
