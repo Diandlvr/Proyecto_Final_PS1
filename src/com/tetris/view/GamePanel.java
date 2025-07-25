@@ -124,9 +124,9 @@ public class GamePanel extends JPanel {
         g2.fillRect(0, 0, boardW, boardH);
         
         // Texto Perdiste
-        g2.setFont(new Font("Arial", Font.BOLD, 36));
+        g2.setFont(new Font("Helvetica", Font.BOLD, 36));
         g2.setColor(Color.RED);
-        String gameOver = "PERDISTE";
+        String gameOver = "GAME OVER";
         int textWidth = g2.getFontMetrics().stringWidth(gameOver);
         g2.drawString(gameOver, (boardW - textWidth) / 2, boardH / 2 - 20);
         
