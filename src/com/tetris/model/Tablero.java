@@ -1,10 +1,6 @@
 package com.tetris.model;
-//Aqui se importa la calse celda para usarla en el tablero...
-import com.tetris.model.Celdas;
 
-import com.tetris.model.Celdas;
 import java.awt.Point;
-import com.tetris.model.Piezas;
 
 public class Tablero { //contiene la matriz en la que se almacenan las celdas
     // se configura el tamaño de las celdas
