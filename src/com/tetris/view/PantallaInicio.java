@@ -40,10 +40,6 @@ public class PantallaInicio extends JFrame {
         JPanel panelCentro = new JPanel(new GridLayout(10, 1));
         panelCentro.setBackground(Color.WHITE);
 
-        // Panel de contenido central
-        JPanel panelCentro = new JPanel(new GridLayout(10, 1));
-        panelCentro.setBackground(Color.WHITE);
-
         JLabel universidad = new JLabel("Universidad Tecnológica de Panamá", SwingConstants.CENTER);
         JLabel facultad = new JLabel("Facultad de Ingeniería de Sistemas Computacionales", SwingConstants.CENTER);
         JLabel carrera = new JLabel("Carrera: Ingeniería de Software", SwingConstants.CENTER);
