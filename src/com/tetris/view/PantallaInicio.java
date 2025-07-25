@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class PantallaInicio extends JFrame {
     public PantallaInicio() {
         setTitle("Presentación - Tetris");
-        setSize(800, 700);
+        setSize(800, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
