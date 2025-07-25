@@ -15,15 +15,30 @@ public class PantallaInicio extends JFrame {
 
         // Panel superior con logos (UTP y FISC)
         JPanel panelLogos = new JPanel(new BorderLayout());
-        panelLogos.setBackground(Color.BLACK);
+        panelLogos.setBackground(Color.WHITE);
+        panelLogos.setPreferredSize(new Dimension(800, 120));
 
-        JLabel logoUTP = new JLabel(new ImageIcon("e498a239-6169-4d31-91ec-b62ecebfd0e3.png"));
-        JLabel logoFISC = new JLabel(new ImageIcon("a603a410-0fcb-4501-a5b0-65317ffa5515.png"));
-        logoUTP.setHorizontalAlignment(SwingConstants.LEFT);
-        logoFISC.setHorizontalAlignment(SwingConstants.RIGHT);
+        // Cargar y escalar imágenes
+        ImageIcon utpIcon = new ImageIcon(getClass().getResource("/logoutp.jpg"));
+        ImageIcon fiscIcon = new ImageIcon(getClass().getResource("/logosistemas.png"));
 
+        Image utpImg = utpIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        Image fiscImg = fiscIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+
+        JLabel logoUTP = new JLabel(new ImageIcon(utpImg));
+        JLabel logoFISC = new JLabel(new ImageIcon(fiscImg));
+
+        // Agregar padding para no pegarlos a los bordes
+        logoUTP.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
+        logoFISC.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20));
+
+        // Añadir al panel
         panelLogos.add(logoUTP, BorderLayout.WEST);
         panelLogos.add(logoFISC, BorderLayout.EAST);
+
+        // Panel de contenido central
+        JPanel panelCentro = new JPanel(new GridLayout(10, 1));
+        panelCentro.setBackground(Color.WHITE);
 
         // Panel de contenido central
         JPanel panelCentro = new JPanel(new GridLayout(10, 1));
