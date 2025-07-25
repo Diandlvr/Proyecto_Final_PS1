@@ -63,13 +63,13 @@ public class GamePanel extends JPanel {
     
     private void dibujarInformacion(Graphics2D g2, int boardW) {
         g2.setColor(Color.WHITE);
-        g2.setFont(new Font("Arial", Font.BOLD, 16));
+        g2.setFont(new Font("Helvetica", Font.BOLD, 16));
         
         int y = 30;
         g2.drawString("TETRIS", boardW + 20, y);
         
         y += 40;
-        g2.setFont(new Font("Arial", Font.PLAIN, 14));
+        g2.setFont(new Font("Helvetica", Font.PLAIN, 14));
         g2.drawString("Puntuación: " + juego.getPuntuacion(), boardW + 20, y);
 
         
@@ -79,7 +79,7 @@ public class GamePanel extends JPanel {
     
     private void dibujarSiguientePieza(Graphics2D g2, int boardW) {
         g2.setColor(Color.WHITE);
-        g2.setFont(new Font("Arial", Font.BOLD, 14));
+        g2.setFont(new Font("Helvetica", Font.BOLD, 14));
         g2.drawString("Siguiente:", boardW + 20, 180);
         
         // Dibujar siguiente pieza
@@ -101,7 +101,7 @@ public class GamePanel extends JPanel {
         g2.setFont(new Font("Arial", Font.BOLD, 14));
         g2.drawString("Controles:", boardW + 20, 320);
         
-        g2.setFont(new Font("Arial", Font.PLAIN, 12));
+        g2.setFont(new Font("Helvetica", Font.PLAIN, 12));
         String[] controles = {
             "← → : Mover",
             "↓ : Bajar",
@@ -119,26 +119,26 @@ public class GamePanel extends JPanel {
     }
     
     private void dibujarGameOver(Graphics2D g2, int boardW, int boardH) {
-        // Fondo semi-transparente
+        // Fondo 
         g2.setColor(new Color(0, 0, 0, 150));
         g2.fillRect(0, 0, boardW, boardH);
         
-        // Texto Game Over
+        // Texto Perdiste
         g2.setFont(new Font("Arial", Font.BOLD, 36));
         g2.setColor(Color.RED);
-        String gameOver = "GAME OVER";
+        String gameOver = "PERDISTE";
         int textWidth = g2.getFontMetrics().stringWidth(gameOver);
         g2.drawString(gameOver, (boardW - textWidth) / 2, boardH / 2 - 20);
         
         // Puntuación final
-        g2.setFont(new Font("Arial", Font.PLAIN, 18));
+        g2.setFont(new Font("Helvetica", Font.PLAIN, 18));
         g2.setColor(Color.WHITE);
         String puntuacion = "Puntuación: " + juego.getPuntuacion();
         textWidth = g2.getFontMetrics().stringWidth(puntuacion);
         g2.drawString(puntuacion, (boardW - textWidth) / 2, boardH / 2 + 20);
         
         // Instrucción para reiniciar
-        g2.setFont(new Font("Arial", Font.PLAIN, 14));
+        g2.setFont(new Font("Helvetica", Font.PLAIN, 14));
         String reiniciar = "Presiona R para reiniciar";
         textWidth = g2.getFontMetrics().stringWidth(reiniciar);
         g2.drawString(reiniciar, (boardW - textWidth) / 2, boardH / 2 + 50);
@@ -150,7 +150,7 @@ public class GamePanel extends JPanel {
         g2.fillRect(0, 0, boardW, boardH);
         
         // Texto Pausa
-        g2.setFont(new Font("Arial", Font.BOLD, 36));
+        g2.setFont(new Font("Helvetica", Font.BOLD, 36));
         g2.setColor(Color.YELLOW);
         String pausa = "PAUSA";
         int textWidth = g2.getFontMetrics().stringWidth(pausa);
